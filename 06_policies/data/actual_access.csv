@@ -1,0 +1,9 @@
+﻿User,Group,Expires,Owner
+a.smirnova,Faculty,2026-12-31,Academic
+p.petrov,FinanceRead,2026-12-31,Finance
+n.ivanova,Faculty,2026-12-31,Academic
+admin1,ITAdmins,2026-12-31,IT
+lab.contractor,ResearchRead,2026-10-15,Research
+student.ivanov,LabAdmins,2026-12-31,IT
+temp.vendor,Administrators,2026-09-01,IT
+former.vendor,VPNUsers,2026-09-15,IT

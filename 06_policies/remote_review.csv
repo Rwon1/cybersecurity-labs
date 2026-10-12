@@ -1,0 +1,6 @@
+﻿User,MFA,ManagedDevice,VPN,Approval,Result,Reason
+a.smirnova,Enabled,yes,yes,Approved,PASS,
+p.petrov,Disabled,yes,yes,Approved,FAIL,MFA=Disabled
+lab.contractor,Disabled,no,yes,Expired,FAIL,MFA=Disabled; ManagedDevice=no; Approval=Expired
+admin1,Enabled,yes,yes,Approved,PASS,
+former.vendor,Disabled,no,yes,Expired,FAIL,MFA=Disabled; ManagedDevice=no; Approval=Expired; Аккаунт отключён

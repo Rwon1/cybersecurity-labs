@@ -1,0 +1,7 @@
+﻿At,Inject,NewInformation,Question
+09:08,User report,Teacher entered password into suspicious page,What is confirmed?
+09:11,Identity alert,New login from 203.0.113.91,What must be checked?
+09:17,LMS alert,180-row export by teacher1,Containment choice?
+09:21,Identity response,Sessions revoked,How verify?
+09:28,Management request,Dean requests incident summary,What can be stated as fact?
+10:05,Recovery request,LMS should return before class,What are functional retests?

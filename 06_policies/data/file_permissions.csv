@@ -1,0 +1,9 @@
+﻿File,Principal,Permission
+grades.csv,Registrar,ReadWrite
+grades.csv,Everyone,Read
+salary_report.csv,Finance,ReadWrite
+salary_report.csv,Guest,Read
+timetable.txt,Everyone,Read
+api_tokens.txt,ITAdmins,Read
+exam_answers.txt,Students,Read
+backup_manifest.csv,IT,ReadWrite

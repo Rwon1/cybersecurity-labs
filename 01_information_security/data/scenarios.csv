@@ -1,0 +1,7 @@
+﻿ScenarioId,Observation,PotentialImpact,ExistingControl
+S01,Student sees another student grade,Privacy exposure,Login only
+S02,Grade changed without approval,Wrong transcript,Daily backup
+S03,Portal unavailable during exam,Students cannot submit,Single server
+S04,Backup readable by guest account,Possible data leak,Nightly copies
+S05,Unauthorized grade edit blocked and logged,Attempt prevented,Object-level authorization
+S06,Teacher laptop stolen while unlocked,Session exposure,Password at login

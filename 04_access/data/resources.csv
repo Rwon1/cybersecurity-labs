@@ -1,0 +1,7 @@
+﻿Resource,Type,Owner,Department,Sensitivity
+grade_s1,OwnGrade,student1,CS,Sensitive
+grade_s2,OwnGrade,student2,Math,Sensitive
+group_cs,GroupGrades,teacher1,CS,Sensitive
+group_math,GroupGrades,teacher2,Math,Sensitive
+roles,RoleConfig,admin1,IT,Confidential
+portal_config,SystemConfig,admin1,IT,Internal

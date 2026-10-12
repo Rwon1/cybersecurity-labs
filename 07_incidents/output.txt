@@ -1,0 +1,13 @@
+events.csv: 18 событий; security_events.csv — его дубликат.
+Windows + Linux + LMS: 19 событий, время UTC.
+Сохранено копий журналов и материалов: 6; хеши совпали.
+Restore: исходный файл совпал; изменённый отличается; локальная копия совпала.
+В локальной копии 3 строки оценок.
+Учебные функциональные проверки из recovery_checks.csv:
+Revoked sessions cannot access: PASS
+Grade rows count: PASS
+Student views own grades: PASS
+Student views another grade: FAIL
+Alert on unauthorized role change: FAIL
+Encryption key available: NOT_TESTED
+Закрытие INC-104: нельзя, есть FAIL и NOT_TESTED.

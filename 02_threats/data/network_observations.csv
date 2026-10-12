@@ -1,0 +1,5 @@
+﻿FlowId,Protocol,TransportSecurity,Observation
+F01,HTTPS,TLS,Normal web request
+F02,HTTP,None,Credentials would be exposed if transmitted
+F03,DNS,None,Query metadata visible
+F04,HTTPS,TLS,Unknown host but encrypted connection

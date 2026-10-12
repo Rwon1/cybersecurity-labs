@@ -1,0 +1,8 @@
+﻿Role,ResourceType,Action
+Student,OwnGrade,read
+Teacher,GroupGrades,read
+Teacher,GroupGrades,write
+Methodist,GroupGrades,read
+Administrator,RoleConfig,manage
+Administrator,SystemConfig,manage
+Student,RoleConfig,manage

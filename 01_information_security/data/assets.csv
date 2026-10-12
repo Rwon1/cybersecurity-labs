@@ -1,0 +1,7 @@
+﻿AssetId,Asset,Owner,DataClass,Importance
+A01,Grade register,Registrar,Sensitive,High
+A02,Public timetable,Academic office,Public,Medium
+A03,Student accounts,Identity team,Confidential,High
+A04,LMS server,IT operations,Internal,High
+A05,Backup repository,IT operations,Sensitive,High
+A06,Course materials,Faculty,Internal,Medium

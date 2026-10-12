@@ -1,0 +1,5 @@
+teacher1: Teacher -> Methodist
+group_cs read: ALLOW
+group_cs write: DENY
+former1 write: DENY
+Это проверка модели в CSV, не изменение реальной учетной записи.

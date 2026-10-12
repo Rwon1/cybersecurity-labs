@@ -1,0 +1,11 @@
+﻿SourceZone,Destination,Protocol,Port,Expected,Rationale
+Students,Web,TCP,443,ALLOW,LMS access
+Students,DB,TCP,5432,DENY,No direct DB access
+Admin,Web,TCP,443,ALLOW,Internal service
+Admin,DB,TCP,5432,ALLOW,Approved admin access
+Guest,Web,TCP,443,DENY,No internal access
+Guest,DB,TCP,5432,DENY,No internal access
+Servers,DB,TCP,5432,ALLOW,Application backend
+Students,Admin,TCP,3389,DENY,No RDP
+Guest,Internet,TCP,443,ALLOW,External web
+Students,DNS,UDP,53,ALLOW,Name resolution

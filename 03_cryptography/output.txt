@@ -1,0 +1,16 @@
+Caesar: XQLYHUVLWB -> UNIVERSITY
+Перебор сдвигов: 1: WPKXGTUKVA; 2: VOJWFSTJUZ; 3: UNIVERSITY; 4: TMHUDQRHSX; 5: SLGTCPQGRW; 6: RKFSBOPFQV; 7: QJERANOEPU; 8: PIDQZMNDOT; 9: OHCPYLMCNS; 10: NGBOXKLBMR; 11: MFANWJKALQ; 12: LEZMVIJZKP; 13: KDYLUHIYJO; 14: JCXKTGHXIN; 15: IBWJSFGWHM; 16: HAVIREFVGL; 17: GZUHQDEUFK; 18: FYTGPCDTEJ; 19: EXSFOBCSDI; 20: DWRENABRCH; 21: CVQDMZAQBG; 22: BUPCLYZPAF; 23: ATOBKXYOZE; 24: ZSNAJWXNYD; 25: YRMZIVWMXC
+SHA-256 исходный: 021dd42d274e32e4a2283a58c6124cfe4c2ff887a2d7c62ad656141f36c30329
+SHA-256 после замены 85 на 86: bd6d7324d1f5e5766be53caaa866f020f8642c9c96f4651c7beb1afa01938dd2
+AES-GCM: расшифрование совпало с исходным сообщением
+Подмена шифротекста: отклонена (InvalidTag)
+Подмена AAD: отклонена (InvalidTag)
+Гибридная схема: RSA-OAEP передал AES-ключ; AES-GCM восстановил сообщение
+RSA-PSS: подпись создана закрытым ключом и проверена открытым
+RSA-PSS: изменённое сообщение отклонено
+ECDH + HKDF + AES-GCM: общий ключ совпал, сообщение восстановлено
+scrypt: одна фраза с двумя разными salt даёт разные результаты
+scrypt: верный пароль принят, неверный отклонён
+Учебные параметры scrypt: N=16384, r=8, p=1, salt=16 байт; 206.633 мс
+SHA-256: 0.000985 мс на операцию (среднее 10000 повторов)
+Ключи существуют только в памяти и в файл не записываются.

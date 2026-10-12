@@ -1,0 +1,6 @@
+﻿Control,Expected,Evidence,Observed,Owner
+Staff MFA,Enabled,accounts.csv,See accounts,Identity
+Leaver accounts,Disabled within 4h,actual_access.csv,Review access,IT
+Backup restore test,Quarterly,restore_report.csv,Last test 2026-06-01,IT
+Security training,Annual,training.csv,Review dates,HR
+Incident contacts,Current,contact_tree.csv,Current,Security
