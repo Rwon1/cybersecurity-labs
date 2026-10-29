@@ -1,0 +1,11 @@
+$ cd ~/labs/12_cryptography
+
+$ python3 scripts/review_controls.py
+CASES 6
+ISO | SHA256 | Доверенный эталон
+BACKUP | AES-GCM | Защита ключа
+ORDER | Ed25519 | Доверие к публичному ключу
+API | HMAC | Общий секрет
+PASSWORD | Argon2id | Соль и параметры стоимости
+WEB | TLS | Проверка сертификата
+ALL_HAVE_LIMITATION True

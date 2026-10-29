@@ -1,0 +1,9 @@
+﻿File,Description,SuggestedOwner
+grades.csv,Grades with synthetic student IDs,Registrar
+timetable.txt,Published timetable,Academic
+staff_directory.csv,Internal staff contacts,HR
+salary_report.csv,Payroll information,Finance
+course_outline.txt,Public course outline,Faculty
+api_tokens.txt,Synthetic example tokens,IT
+exam_answers.txt,Exam answer keys,Faculty
+backup_manifest.csv,Backup job metadata,IT

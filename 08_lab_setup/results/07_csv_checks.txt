@@ -1,0 +1,13 @@
+$ cd ~/labs/08_lab_setup
+
+$ python3 scripts/check_lab_evidence.py data/example_checks.csv
+CHECKS 8
+PASS 6
+REVIEW 2
+REVIEW ssh_host_key host-key-not-verified
+REVIEW snapshot_restore restore-not-tested
+
+$ python3 scripts/check_lab_evidence.py data/actual_checks.csv
+CHECKS 8
+PASS 8
+REVIEW 0

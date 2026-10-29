@@ -1,0 +1,9 @@
+id,layer,test,result,expected
+C01,network,ip-route,pass,pass
+C02,service,ssh-active,pass,pass
+C03,socket,ssh-listen,pass,pass
+C04,http,status-home,pass,pass
+C05,http,status-health,fail,pass
+C06,auth,ssh-key-login,pass,pass
+C07,logging,request-id,fail,pass
+C08,filter,hostonly-rule,pass,pass

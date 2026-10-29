@@ -1,0 +1,62 @@
+enable
+configure terminal
+hostname Campus-Router
+interface GigabitEthernet0/0
+no shutdown
+exit
+interface GigabitEthernet0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+ip access-group STUDENTS_IN in
+exit
+interface GigabitEthernet0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+ip access-group ADMIN_IN in
+exit
+interface GigabitEthernet0/0.30
+encapsulation dot1Q 30
+ip address 192.168.30.1 255.255.255.0
+ip access-group SERVERS_IN in
+exit
+interface GigabitEthernet0/0.40
+encapsulation dot1Q 40
+ip address 192.168.40.1 255.255.255.0
+ip access-group GUEST_IN in
+exit
+interface GigabitEthernet0/1
+ip address 203.0.113.1 255.255.255.0
+ip access-group EXTERNAL_IN in
+no shutdown
+exit
+ip access-list extended STUDENTS_IN
+permit tcp 192.168.10.0 0.0.0.255 host 192.168.30.10 eq 443
+permit udp 192.168.10.0 0.0.0.255 host 203.0.113.53 eq 53
+deny ip any any
+exit
+ip access-list extended ADMIN_IN
+permit tcp 192.168.20.0 0.0.0.255 host 192.168.30.10 eq 443
+permit tcp 192.168.20.0 0.0.0.255 host 192.168.30.20 eq 5432
+deny ip any any
+exit
+ip access-list extended GUEST_IN
+permit tcp 192.168.40.0 0.0.0.255 host 203.0.113.53 eq 443
+permit udp 192.168.40.0 0.0.0.255 host 203.0.113.53 eq 53
+deny ip any any
+exit
+ip access-list extended SERVERS_IN
+permit tcp host 192.168.30.10 eq 443 192.168.10.0 0.0.0.255 established
+permit tcp host 192.168.30.10 eq 443 192.168.20.0 0.0.0.255 established
+permit tcp host 192.168.30.20 eq 5432 192.168.20.0 0.0.0.255 established
+permit udp 192.168.30.0 0.0.0.255 host 203.0.113.53 eq 53
+deny ip any any
+exit
+ip access-list extended EXTERNAL_IN
+permit udp host 203.0.113.53 eq 53 192.168.10.0 0.0.0.255
+permit udp host 203.0.113.53 eq 53 192.168.30.0 0.0.0.255
+permit udp host 203.0.113.53 eq 53 192.168.40.0 0.0.0.255
+permit tcp host 203.0.113.53 eq 443 192.168.40.0 0.0.0.255 established
+deny ip any any
+exit
+end
+write memory

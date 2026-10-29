@@ -1,0 +1,28 @@
+$ ss -tuln
+Netid State  Recv-Q Send-Q         Local Address:Port Peer Address:PortProcess
+udp   UNCONN 0      0                 127.0.0.54:53        0.0.0.0:*
+udp   UNCONN 0      0              127.0.0.53%lo:53        0.0.0.0:*
+udp   UNCONN 0      0      192.168.56.101%enp0s8:68        0.0.0.0:*
+udp   UNCONN 0      0           10.0.2.15%enp0s3:68        0.0.0.0:*
+tcp   LISTEN 0      4096           127.0.0.53%lo:53        0.0.0.0:*
+tcp   LISTEN 0      4096                 0.0.0.0:22        0.0.0.0:*
+tcp   LISTEN 0      4096              127.0.0.54:53        0.0.0.0:*
+tcp   LISTEN 0      4096                    [::]:22           [::]:*
+
+$ sudo ss -lntp
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=265,fd=15))
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=433,fd=3),("systemd",pid=1,fd=81))
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=265,fd=17))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=433,fd=4),("systemd",pid=1,fd=82))
+
+$ cd ~/labs/10_network_traffic
+
+$ python3 scripts/analyze_flows.py
+FLOWS 8
+TCP 5
+UDP 2
+ICMP 1
+REVIEW 12:00:04 192.168.56.101 80 NO_RESPONSE
+REVIEW 12:00:09 192.168.56.101 443 RST
+SSH_HANDSHAKE True

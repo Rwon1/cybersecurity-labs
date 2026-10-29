@@ -1,0 +1,6 @@
+﻿Zone,Subnet,Gateway,Host,Address,Purpose
+Students,192.168.10.0/24,192.168.10.1,Student-PC,192.168.10.10,Student
+Admin,192.168.20.0/24,192.168.20.1,Admin-PC,192.168.20.10,Administration
+Servers,192.168.30.0/24,192.168.30.1,Web,192.168.30.10,HTTPS
+Servers,192.168.30.0/24,192.168.30.1,DB,192.168.30.20,Database
+Guest,192.168.40.0/24,192.168.40.1,Guest-PC,192.168.40.10,Guest

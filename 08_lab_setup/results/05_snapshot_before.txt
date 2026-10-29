@@ -1,0 +1,4 @@
+$ echo lab8-test > ~/snapshot-test.txt
+
+$ cat ~/snapshot-test.txt
+lab8-test

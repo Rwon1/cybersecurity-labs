@@ -1,0 +1,4 @@
+interface,address,prefix,gateway,role
+enp0s3,10.0.2.15,24,10.0.2.2,NAT
+enp0s8,192.168.56.101,24,,HOST_ONLY
+lo,127.0.0.1,8,,LOOPBACK

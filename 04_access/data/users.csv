@@ -1,0 +1,8 @@
+﻿User,Role,Department,ManagedDevice,Status
+student1,Student,CS,yes,Active
+student2,Student,Math,no,Active
+teacher1,Teacher,CS,yes,Active
+teacher2,Teacher,Math,no,Active
+methodist1,Methodist,CS,yes,Active
+admin1,Administrator,IT,yes,Active
+former1,Teacher,CS,yes,Disabled

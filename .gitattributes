@@ -1,0 +1,6 @@
+*.png binary
+*.bin binary
+*.enc binary
+12_cryptography/data/*.txt -text
+12_cryptography/results/changed.txt -text
+12_cryptography/results/restored.txt -text

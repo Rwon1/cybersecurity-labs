@@ -1,0 +1,8 @@
+$ pid=$(cat ~/lecture11-www/server.pid); ps -p "$pid" -o pid,user,args; kill -TERM "$pid"
+    PID USER     COMMAND
+    635 student  python3 -m http.server 8080 --bind 127.0.0.1
+
+$ sleep 1
+
+$ ss -lnt '( sport = :8080 )'
+State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess

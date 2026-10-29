@@ -1,0 +1,5 @@
+name,type,answer,ttl,status
+lab.example.test,A,192.168.56.101,300,NOERROR
+lab.example.test,AAAA,,300,NOERROR
+missing.example.test,A,,0,NXDOMAIN
+docs.example.test,CNAME,lab.example.test,120,NOERROR

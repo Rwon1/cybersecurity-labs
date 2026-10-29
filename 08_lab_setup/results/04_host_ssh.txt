@@ -1,0 +1,21 @@
+$ Get-NetIPAddress -IPAddress 192.168.56.1 | Select-Object IPAddress,PrefixLength,InterfaceAlias
+
+IPAddress    PrefixLength InterfaceAlias
+---------    ------------ --------------
+192.168.56.1           24 Ethernet
+
+$ ping -n 2 192.168.56.101
+
+Pinging 192.168.56.101 with 32 bytes of data:
+Reply from 192.168.56.101: bytes=32 time<1ms TTL=64
+Reply from 192.168.56.101: bytes=32 time=1ms TTL=64
+
+Ping statistics for 192.168.56.101:
+    Packets: Sent = 2, Received = 2, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+$ ssh-keygen -lf trusted-host-key.pub
+256 SHA256:yUFQJZxLd2gxCiA6ZIZC0o/z1Wp78XlyXhGR2/pztbQ no comment (ED25519)
+$ ssh -i student_ed25519 -o UserKnownHostsFile=known_hosts -o StrictHostKeyChecking=yes student@192.168.56.101 "hostname; whoami"
+sec-lab-ubuntu
+student

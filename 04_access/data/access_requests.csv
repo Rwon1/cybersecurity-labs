@@ -1,0 +1,11 @@
+﻿Request,User,Resource,Action
+R01,student1,grade_s1,read
+R02,student1,grade_s2,read
+R03,teacher1,group_cs,write
+R04,teacher1,group_math,write
+R05,teacher2,group_math,write
+R06,methodist1,group_cs,read
+R07,methodist1,group_math,read
+R08,student1,roles,manage
+R09,admin1,portal_config,manage
+R10,former1,group_cs,write

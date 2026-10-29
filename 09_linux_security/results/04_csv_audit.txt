@@ -1,0 +1,15 @@
+$ cd ~/labs/09_linux_security
+
+$ python3 scripts/audit_permissions.py data/permissions.csv
+OBJECTS 8
+PASS 4
+REVIEW 4
+REVIEW P01 sensitive-world-readable
+REVIEW P03 world-writable,sensitive-world-readable,sensitive-group-writable
+REVIEW P04 world-writable
+REVIEW P05 missing-owner
+
+$ python3 scripts/audit_permissions.py data/permissions_fixed.csv
+OBJECTS 8
+PASS 8
+REVIEW 0

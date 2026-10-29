@@ -1,0 +1,7 @@
+﻿Component,Test,Expected,Observed,Status
+Identity,Revoked sessions cannot access,DENY,DENY,PASS
+Database,Grade rows count,3,3,PASS
+LMS,Student views own grades,ALLOW,ALLOW,PASS
+LMS,Student views another grade,DENY,ALLOW,FAIL
+Monitoring,Alert on unauthorized role change,ALERT,NO_ALERT,FAIL
+Backup,Encryption key available,YES,UNKNOWN,NOT_TESTED

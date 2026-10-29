@@ -1,0 +1,43 @@
+$ whoami
+student
+
+$ id
+uid=1000(student) gid=1000(student) groups=1000(student),27(sudo)
+
+$ groups
+student sudo
+
+$ getent passwd "$USER"
+student:x:1000:1000:Student:/home/student:/bin/bash
+
+$ getent group sudo
+sudo:x:27:student
+
+$ sudo -l
+Matching Defaults entries for student on sec-lab-ubuntu:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User student may run the following commands on sec-lab-ubuntu:
+    (ALL : ALL) ALL
+    (ALL : ALL) ALL
+
+$ getent group labreviewers || sudo groupadd labreviewers
+
+$ id labanalyst 2>/dev/null || sudo useradd -m -s /bin/bash labanalyst
+
+$ sudo usermod -aG labreviewers labanalyst
+
+$ id labanalyst
+uid=1001(labanalyst) gid=1002(labanalyst) groups=1002(labanalyst),1001(labreviewers)
+
+$ sudo -u labanalyst id
+uid=1001(labanalyst) gid=1002(labanalyst) groups=1002(labanalyst),1001(labreviewers)
+
+$ getent passwd labanalyst
+labanalyst:x:1001:1002::/home/labanalyst:/bin/bash
+
+$ sudo getent shadow labanalyst | awk -F: '{print $1 " shadow-entry=present; password-field not exported"}'
+labanalyst shadow-entry=present; password-field not exported
+
+$ sudo passwd -S labanalyst
+labanalyst L 2026-10-28 0 99999 7 -1

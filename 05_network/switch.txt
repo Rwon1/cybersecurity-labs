@@ -1,0 +1,46 @@
+enable
+configure terminal
+hostname Campus-Switch
+vlan 10
+name Students
+exit
+vlan 20
+name Admin
+exit
+vlan 30
+name Servers
+exit
+vlan 40
+name Guest
+exit
+interface FastEthernet0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+no shutdown
+exit
+interface FastEthernet0/2
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+no shutdown
+exit
+interface FastEthernet0/3
+switchport mode access
+switchport access vlan 20
+spanning-tree portfast
+no shutdown
+exit
+interface FastEthernet0/4
+switchport mode access
+switchport access vlan 40
+spanning-tree portfast
+no shutdown
+exit
+interface range FastEthernet0/5 - 6
+switchport mode access
+switchport access vlan 30
+spanning-tree portfast
+no shutdown
+exit
+end
+write memory

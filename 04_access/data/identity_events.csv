@@ -1,0 +1,5 @@
+﻿Time,User,Event,OldRole,NewRole,Note
+2026-09-01T08:00Z,teacher1,JOINER,,Teacher,CS
+2026-09-15T08:00Z,teacher2,DEVICE_CHANGE,unmanaged,managed,Pending
+2026-09-20T08:00Z,former1,LEAVER,Teacher,Disabled,Sessions not revoked
+2026-09-25T08:00Z,teacher1,MOVER,Teacher,Methodist,Review permissions

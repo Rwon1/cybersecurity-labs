@@ -1,0 +1,16 @@
+$ stat -c '%a %U:%G %n' ~/lab09/shared
+770 student:labreviewers /home/student/lab09/shared
+
+$ id student
+uid=1000(student) gid=1000(student) groups=1000(student),27(sudo)
+
+$ getent group labreviewers
+labreviewers:x:1001:labanalyst
+
+$ sudo chmod 2770 ~/lab09/shared
+
+$ stat -c '%a %U:%G %n' ~/lab09/shared
+2770 student:labreviewers /home/student/lab09/shared
+
+$ ls -ld ~/lab09/shared
+drwxrws--- 2 student labreviewers 4096 Oct 29 03:24 /home/student/lab09/shared

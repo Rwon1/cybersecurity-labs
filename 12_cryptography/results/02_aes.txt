@@ -1,0 +1,30 @@
+$ cd ~/labs/12_cryptography
+
+$ python3 -c 'import cryptography; print(cryptography.__version__)'
+41.0.7
+
+$ python3 scripts/aead_file.py encrypt --input data/secret.txt --output secret.enc --keyfile secret.key
+Encrypted: secret.enc
+Key: secret.key
+
+$ python3 scripts/aead_file.py decrypt --input secret.enc --output restored.txt --keyfile secret.key
+Decrypted: restored.txt
+
+$ sha256sum data/secret.txt restored.txt
+2593cf637f99b00b0ec7d36eec020c233c80bb3c8d054937fecb53652d7be075  data/secret.txt
+2593cf637f99b00b0ec7d36eec020c233c80bb3c8d054937fecb53652d7be075  restored.txt
+
+$ python3 scripts/tamper.py secret.enc damaged.enc
+Tampered copy: damaged.enc
+
+$ python3 scripts/aead_file.py decrypt --input damaged.enc --output wrong.txt --keyfile secret.key; echo "decrypt exit=$?"
+decrypt exit=1
+
+$ test ! -e wrong.txt && echo WRONG_FILE_ABSENT
+WRONG_FILE_ABSENT
+
+$ stat -c '%a %U:%G %n' secret.key
+600 student:student secret.key
+
+STDERR:
+Authentication failed

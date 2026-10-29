@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+*.key
+private-*
+private.pem
+student_ed25519*
+student-password.txt

@@ -1,0 +1,11 @@
+﻿Request,User,Resource,Action,Before,After,Reason
+R01,student1,grade_s1,read,ALLOW,ALLOW,Роль и условия доступа выполнены
+R02,student1,grade_s2,read,DENY,DENY,Чужая оценка
+R03,teacher1,group_cs,write,ALLOW,ALLOW,Роль и условия доступа выполнены
+R04,teacher1,group_math,write,DENY,DENY,Другая кафедра
+R05,teacher2,group_math,write,DENY,DENY,Неуправляемое устройство
+R06,methodist1,group_cs,read,ALLOW,ALLOW,Роль и условия доступа выполнены
+R07,methodist1,group_math,read,DENY,DENY,Другая кафедра
+R08,student1,roles,manage,ALLOW,DENY,Роль не разрешает действие
+R09,admin1,portal_config,manage,ALLOW,ALLOW,Роль и условия доступа выполнены
+R10,former1,group_cs,write,DENY,DENY,Учетная запись отключена

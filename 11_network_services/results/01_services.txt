@@ -1,0 +1,57 @@
+$ hostnamectl
+ Static hostname: sec-lab-ubuntu
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: d3fa2dfa9c7f4f5faf0a957e8c9b4f84
+         Boot ID: 29e6496194c64c34a24182651377ee05
+  Virtualization: oracle
+Operating System: Ubuntu 24.04.5 LTS
+          Kernel: Linux 6.8.0-147-generic
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 10month 3w 6d
+
+$ ip -br a
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             10.0.2.15/24 metric 100 fd17:625c:f037:2:a00:27ff:feca:801/64 fe80::a00:27ff:feca:801/64
+enp0s8           UP             192.168.56.101/24 metric 100 fe80::a00:27ff:feca:802/64
+
+$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+10.0.2.2 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 100
+10.0.2.3 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 100
+192.168.56.0/24 dev enp0s8 proto kernel scope link src 192.168.56.101 metric 100
+
+$ systemctl is-active ssh
+active
+
+$ systemctl is-enabled ssh
+enabled
+
+$ sudo ss -lntup
+Netid State  Recv-Q Send-Q         Local Address:Port Peer Address:PortProcess
+udp   UNCONN 0      0                 127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=282,fd=16))
+udp   UNCONN 0      0              127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=282,fd=14))
+udp   UNCONN 0      0      192.168.56.101%enp0s8:68        0.0.0.0:*    users:(("systemd-network",pid=268,fd=19))
+udp   UNCONN 0      0           10.0.2.15%enp0s3:68        0.0.0.0:*    users:(("systemd-network",pid=268,fd=23))
+tcp   LISTEN 0      4096              127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=282,fd=17))
+tcp   LISTEN 0      4096           127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=282,fd=15))
+tcp   LISTEN 0      4096                 0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=428,fd=3),("systemd",pid=1,fd=81))
+tcp   LISTEN 0      4096                    [::]:22           [::]:*    users:(("sshd",pid=428,fd=4),("systemd",pid=1,fd=82))
+
+$ pid=$(systemctl show ssh -p MainPID --value); ps -p "$pid" -o pid,ppid,user,comm
+    PID    PPID USER     COMMAND
+    428       1 root     sshd
+
+$ cd ~/labs/11_network_services
+
+$ python3 scripts/audit_services.py
+SERVICES 6
+REVIEW admin-ui verify-disabled
+REVIEW metrics exposed-beyond-loopback
+REVIEW legacy-telnet verify-disabled
+REVIEW_COUNT 3

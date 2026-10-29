@@ -1,0 +1,9 @@
+check_id,status,reason
+vm_boot,pass,
+nat_route,pass,
+dns,pass,
+host_only_ip,pass,
+ssh_service,pass,
+ssh_connection,pass,
+ssh_host_key,review,host-key-not-verified
+snapshot_restore,review,restore-not-tested

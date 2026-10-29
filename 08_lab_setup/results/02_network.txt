@@ -1,0 +1,42 @@
+$ ip -br address
+lo               UNKNOWN        127.0.0.1/8 ::1/128
+enp0s3           UP             10.0.2.15/24 metric 100 fd17:625c:f037:2:a00:27ff:feca:801/64 fe80::a00:27ff:feca:801/64
+enp0s8           UP             192.168.56.101/24 metric 100 fe80::a00:27ff:feca:802/64
+
+$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp src 10.0.2.15 metric 100
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100
+10.0.2.2 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 100
+10.0.2.3 dev enp0s3 proto dhcp scope link src 10.0.2.15 metric 100
+192.168.56.0/24 dev enp0s8 proto kernel scope link src 192.168.56.101 metric 100
+
+$ resolvectl status
+Global
+         Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+  resolv.conf mode: stub
+
+Link 2 (enp0s3)
+    Current Scopes: DNS
+         Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+Current DNS Server: 10.0.2.3
+       DNS Servers: 10.0.2.3
+        DNS Domain: [local DNS suffix redacted]
+
+Link 3 (enp0s8)
+    Current Scopes: none
+         Protocols: -DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+
+$ ping -c 3 -W 3 1.1.1.1 || true
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=64 time=245 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=64 time=275 ms
+64 bytes from 1.1.1.1: icmp_seq=3 ttl=64 time=406 ms
+
+--- 1.1.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2134ms
+rtt min/avg/max/mdev = 245.254/308.766/405.961/69.797 ms
+
+$ getent hosts ubuntu.com
+2620:2d:4000:1::27 ubuntu.com
+2620:2d:4000:1::28 ubuntu.com
+2620:2d:4000:1::26 ubuntu.com

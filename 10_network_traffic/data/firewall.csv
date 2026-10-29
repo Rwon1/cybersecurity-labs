@@ -1,0 +1,5 @@
+direction,source,destination,protocol,port,action,comment
+IN,192.168.56.0/24,192.168.56.101,TCP,22,ALLOW,SSH from host-only
+IN,0.0.0.0/0,192.168.56.101,TCP,22,DENY,Broad deny
+IN,0.0.0.0/0,192.168.56.101,TCP,80,DENY,No web service
+OUT,192.168.56.101,0.0.0.0/0,UDP,53,ALLOW,DNS

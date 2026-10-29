@@ -1,0 +1,9 @@
+﻿User,Type,Department,MFA,Status
+a.smirnova,Staff,Academic,Enabled,Active
+p.petrov,Staff,Finance,Disabled,Active
+lab.contractor,Staff,Research,Disabled,Active
+n.ivanova,Staff,Academic,Enabled,Active
+student1,Student,CS,Disabled,Active
+admin1,Staff,IT,Enabled,Active
+t.romanov,Staff,Library,Enabled,Active
+former.vendor,Contractor,IT,Disabled,Disabled

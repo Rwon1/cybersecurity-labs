@@ -1,0 +1,7 @@
+﻿Id,Scenario,Asset,KnownWeakness
+T1,Impersonated IT support asks for login,LMS account,No independent callback
+T2,Unexpected invoice attachment arrives,Finance workstation,Untrusted attachments
+T3,Campus portal slows under abnormal requests,Portal availability,No traffic shaping
+T4,Reuse of password from another service,Account,Repeated credentials
+T5,Unencrypted public WiFi observed,Web session,No transport protection
+T6,Student accidentally shares grades publicly,Grade file,Broad sharing rights

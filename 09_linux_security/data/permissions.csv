@@ -1,0 +1,9 @@
+id,path,kind,mode,owner,group,sensitive
+P01,/etc/ssh/sshd_config,file,0644,root,root,yes
+P02,/srv/lab09/grades.csv,file,0640,app,app,yes
+P03,/srv/lab09/backup.sql,file,0666,backup,backup,yes
+P04,/srv/lab09/shared,dir,0777,root,labreviewers,no
+P05,/srv/lab09/app.conf,file,0600,,app,yes
+P06,/var/log/lab09.log,file,0640,syslog,adm,no
+P07,/srv/lab09/public.txt,file,0644,app,app,no
+P08,/srv/lab09/secrets,dir,0700,root,root,yes

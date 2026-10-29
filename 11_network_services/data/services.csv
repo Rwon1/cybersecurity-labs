@@ -1,0 +1,7 @@
+service,proto,bind,port,enabled,expected
+ssh,tcp,0.0.0.0,22,yes,hostonly
+nginx,tcp,0.0.0.0,8080,yes,hostonly
+admin-ui,tcp,0.0.0.0,9090,no,loopback
+dns-cache,udp,127.0.0.53,53,yes,loopback
+metrics,tcp,0.0.0.0,9100,yes,loopback
+legacy-telnet,tcp,0.0.0.0,23,no,disabled

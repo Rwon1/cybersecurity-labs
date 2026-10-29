@@ -1,0 +1,7 @@
+case,method,path,status,content_type,body
+H01,GET,/,200,text/html,Welcome
+H02,HEAD,/,200,text/html,
+H03,GET,/missing,404,text/html,Not found
+H04,GET,/admin,403,text/html,Forbidden
+H05,POST,/,405,text/html,Method not allowed
+H06,GET,/health,200,text/plain,ok

@@ -1,0 +1,109 @@
+$ ps -eo pid,ppid,user,comm --sort=pid | head -n 15
+    PID    PPID USER     COMMAND
+      1       0 root     systemd
+      2       0 root     kthreadd
+      3       2 root     pool_workqueue_release
+      4       2 root     kworker/R-rcu_g
+      5       2 root     kworker/R-rcu_p
+      6       2 root     kworker/R-slub_
+      7       2 root     kworker/R-netns
+      8       2 root     kworker/0:0-events
+      9       2 root     kworker/0:1-events
+     10       2 root     kworker/0:0H
+     11       2 root     kworker/u4:0-efi_rts_wq
+     12       2 root     kworker/R-mm_pe
+     13       2 root     rcu_tasks_kthread
+     14       2 root     rcu_tasks_rude_kthread
+
+$ systemctl is-active ssh
+active
+
+$ systemctl status ssh --no-pager
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-10-29 03:24:07 +04; 10s ago
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+    Process: 550 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 551 (sshd)
+      Tasks: 1 (limit: 2275)
+     Memory: 4.6M (peak: 5.5M)
+        CPU: 247ms
+     CGroup: /system.slice/ssh.service
+             └─551 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Warning: some journal files were not opened due to insufficient permissions.
+
+$ sudo ss -lntp | grep ':22'
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=551,fd=3),("systemd",pid=1,fd=76))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=551,fd=4),("systemd",pid=1,fd=82))
+
+$ sudo journalctl -u ssh --since '30 minutes ago' --no-pager
+Oct 29 03:12:03 sec-lab-ubuntu systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Server listening on 0.0.0.0 port 22.
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Server listening on :: port 22.
+Oct 29 03:12:04 sec-lab-ubuntu systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Received signal 15; terminating.
+Oct 29 03:12:04 sec-lab-ubuntu systemd[1]: Stopping ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:12:05 sec-lab-ubuntu systemd[1]: ssh.service: Deactivated successfully.
+Oct 29 03:12:05 sec-lab-ubuntu systemd[1]: Stopped ssh.service - OpenBSD Secure Shell server.
+-- Boot d9a6150cf642421eabdb2dc1936fb158 --
+Oct 29 03:19:36 sec-lab-ubuntu systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:19:38 sec-lab-ubuntu sshd[599]: Server listening on 0.0.0.0 port 22.
+Oct 29 03:19:38 sec-lab-ubuntu sshd[599]: Server listening on :: port 22.
+Oct 29 03:19:39 sec-lab-ubuntu systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: Accepted publickey for student from 192.168.56.1 port 6139 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: pam_unix(sshd:session): session closed for user student
+Oct 29 03:20:57 sec-lab-ubuntu sshd[851]: Accepted publickey for student from 192.168.56.1 port 6140 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:20:57 sec-lab-ubuntu sshd[851]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:17:50 sec-lab-ubuntu sshd[1088]: Connection reset by authenticating user student 192.168.56.1 port 26349 [preauth]
+Oct 29 03:18:18 sec-lab-ubuntu sshd[1098]: Accepted publickey for student from 192.168.56.1 port 26360 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:18:18 sec-lab-ubuntu sshd[1098]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:18:19 sec-lab-ubuntu sshd[1098]: pam_unix(sshd:session): session closed for user student
+Oct 29 03:18:37 sec-lab-ubuntu sshd[1601]: Accepted publickey for student from 192.168.56.1 port 37855 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:18:37 sec-lab-ubuntu sshd[1601]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:19:02 sec-lab-ubuntu sshd[1724]: Accepted publickey for student from 192.168.56.1 port 1864 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:19:02 sec-lab-ubuntu sshd[1724]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:19:03 sec-lab-ubuntu sshd[1724]: pam_unix(sshd:session): session closed for user student
+Oct 29 03:19:03 sec-lab-ubuntu systemd[1]: Stopping ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:19:03 sec-lab-ubuntu sshd[599]: Received signal 15; terminating.
+Oct 29 03:19:03 sec-lab-ubuntu systemd[1]: ssh.service: Deactivated successfully.
+Oct 29 03:19:03 sec-lab-ubuntu systemd[1]: Stopped ssh.service - OpenBSD Secure Shell server.
+-- Boot 46ff66165a8a40a3a52cf5d4e8571a17 --
+Oct 29 03:24:06 sec-lab-ubuntu systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:24:07 sec-lab-ubuntu sshd[551]: Server listening on 0.0.0.0 port 22.
+Oct 29 03:24:07 sec-lab-ubuntu sshd[551]: Server listening on :: port 22.
+Oct 29 03:24:07 sec-lab-ubuntu systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 29 03:24:07 sec-lab-ubuntu sshd[553]: Accepted publickey for student from 192.168.56.1 port 14722 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:24:07 sec-lab-ubuntu sshd[553]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:24:15 sec-lab-ubuntu sshd[601]: Accepted publickey for student from 192.168.56.1 port 14731 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:24:15 sec-lab-ubuntu sshd[601]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+
+$ systemctl list-unit-files --type=service | head -n 20
+UNIT FILE                                    STATE           PRESET
+apparmor.service                             enabled         enabled
+apport-autoreport.service                    static          -
+apport-coredump-hook@.service                static          -
+apport-forward@.service                      static          -
+apport.service                               enabled         enabled
+apt-daily-upgrade.service                    static          -
+apt-daily.service                            static          -
+apt-news.service                             static          -
+autovt@.service                              alias           -
+cloud-config.service                         enabled         enabled
+cloud-final.service                          enabled         enabled
+cloud-init-hotplugd.service                  static          -
+cloud-init-local.service                     enabled         enabled
+cloud-init.service                           enabled         enabled
+console-getty.service                        disabled        disabled
+console-setup.service                        enabled         enabled
+container-getty@.service                     static          -
+cryptdisks-early.service                     masked          enabled
+cryptdisks.service                           masked          enabled
+
+$ sleep 120 & pid=$!; ps -p "$pid" -o pid,ppid,user,comm; kill "$pid"; wait "$pid" 2>/dev/null; echo "wait exit=$?"
+    PID    PPID USER     COMMAND
+    701     685 student  sleep
+wait exit=143

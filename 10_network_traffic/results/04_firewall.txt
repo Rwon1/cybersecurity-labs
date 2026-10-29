@@ -1,0 +1,20 @@
+$ sudo ufw status verbose
+Status: inactive
+
+$ sudo ss -lntp
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+LISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=265,fd=15))
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=433,fd=3),("systemd",pid=1,fd=81))
+LISTEN 0      4096      127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=265,fd=17))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=433,fd=4),("systemd",pid=1,fd=82))
+
+$ cd ~/labs/10_network_traffic
+
+$ python3 scripts/check_firewall.py
+RULES 4
+RULE 1 IN 192.168.56.0/24 TCP 22 ALLOW
+RULE 2 IN 0.0.0.0/0 TCP 22 DENY
+RULE 3 IN 0.0.0.0/0 TCP 80 DENY
+RULE 4 OUT 192.168.56.101 UDP 53 ALLOW
+SSH_RESTRICTED True
+ORDER_MATTERS True

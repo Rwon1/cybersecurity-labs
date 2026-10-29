@@ -1,0 +1,48 @@
+$ mkdir -p ~/lab09
+
+$ cd ~/lab09
+
+$ umask
+0002
+
+$ touch public.txt private.txt
+
+$ chmod 644 public.txt
+
+$ chmod 600 private.txt
+
+$ stat -c '%a %U:%G %n' public.txt private.txt
+644 student:student public.txt
+600 student:student private.txt
+
+$ mkdir -p shared
+
+$ chmod 770 shared
+
+$ stat -c '%a %n' shared
+770 shared
+
+$ sudo chgrp labreviewers shared
+
+$ chmod 2770 shared
+
+$ ls -ld shared
+drwxrwx--- 2 student labreviewers 4096 Oct 29 03:24 shared
+
+$ sudo -u labanalyst touch "$HOME/lab09/shared/from-analyst"; echo "touch exit=$?"
+touch exit=1
+
+$ namei -l "$HOME/lab09/shared"
+f: /home/student/lab09/shared
+drwxr-xr-x root    root         /
+drwxr-xr-x root    root         home
+drwxr-x--- student student      student
+drwxrwxr-x student student      lab09
+drwxrwx--- student labreviewers shared
+
+$ command -v getfacl || true
+
+$ command -v setfacl || true
+
+STDERR:
+touch: cannot touch '/home/student/lab09/shared/from-analyst': Permission denied

@@ -1,0 +1,7 @@
+setting,value,expected
+PermitRootLogin,yes,no
+PasswordAuthentication,yes,no
+PubkeyAuthentication,yes,yes
+X11Forwarding,no,no
+MaxAuthTries,6,3
+AllowUsers,student,student

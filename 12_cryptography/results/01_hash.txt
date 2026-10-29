@@ -1,0 +1,35 @@
+$ cd ~/labs/12_cryptography
+
+$ python3 --version
+Python 3.12.3
+
+$ openssl version
+OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)
+
+$ python3 scripts/hash_experiment.py
+ORIGINAL_SHA256 08d76effa0bbf1dcc2d7b14b7beb1d483b5d9e1101a4c30eeae2df1122a2697a
+CHANGED_SHA256 1d17be80f778dd4704d9b687873fd41cdce129631e69f41e8c8b1091f37d0a9e
+DIFFERENT True
+
+$ sha256sum data/document.txt > SHA256SUMS
+
+$ cat SHA256SUMS
+08d76effa0bbf1dcc2d7b14b7beb1d483b5d9e1101a4c30eeae2df1122a2697a  data/document.txt
+
+$ sha256sum -c SHA256SUMS
+data/document.txt: OK
+
+$ mkdir -p hash-test/data
+
+$ cp data/document.txt hash-test/data/document.txt
+
+$ cp SHA256SUMS hash-test/SHA256SUMS
+
+$ python3 -c "from pathlib import Path; p=Path('hash-test/data/document.txt'); a=bytearray(p.read_bytes()); a[0]^=1; p.write_bytes(a)"
+
+$ (cd hash-test && sha256sum -c SHA256SUMS); echo "changed check exit=$?"
+data/document.txt: FAILED
+changed check exit=1
+
+STDERR:
+sha256sum: WARNING: 1 computed checksum did NOT match

@@ -1,0 +1,105 @@
+$ python3 -m http.server --help | head -n 12
+usage: server.py [-h] [--cgi] [-b ADDRESS] [-d DIRECTORY] [-p VERSION] [port]
+
+positional arguments:
+  port                  bind to this port (default: 8000)
+
+options:
+  -h, --help            show this help message and exit
+  --cgi                 run as CGI server
+  -b ADDRESS, --bind ADDRESS
+                        bind to this address (default: all interfaces)
+  -d DIRECTORY, --directory DIRECTORY
+                        serve this directory (default: current directory)
+
+$ mkdir -p ~/lecture11-www; printf 'Lecture 11 demo\n' > ~/lecture11-www/index.html
+
+$ cd ~/lecture11-www
+
+$ nohup python3 -m http.server 8080 --bind 127.0.0.1 > server.log 2>&1 < /dev/null & echo $! > server.pid
+
+$ sleep 1
+
+$ curl -i http://127.0.0.1:8080/
+HTTP/1.0 200 OK
+
+Server: SimpleHTTP/0.6 Python/3.12.3
+
+Date: Wed, 28 Oct 2026 23:24:47 GMT
+
+Content-type: text/html
+
+Content-Length: 16
+
+Last-Modified: Wed, 28 Oct 2026 23:24:46 GMT
+
+Lecture 11 demo
+
+$ curl -I http://127.0.0.1:8080/
+HTTP/1.0 200 OK
+
+Server: SimpleHTTP/0.6 Python/3.12.3
+
+Date: Wed, 28 Oct 2026 23:24:47 GMT
+
+Content-type: text/html
+
+Content-Length: 16
+
+Last-Modified: Wed, 28 Oct 2026 23:24:46 GMT
+
+$ curl -i http://127.0.0.1:8080/missing
+HTTP/1.0 404 File not found
+
+Server: SimpleHTTP/0.6 Python/3.12.3
+
+Date: Wed, 28 Oct 2026 23:24:47 GMT
+
+Connection: close
+
+Content-Type: text/html;charset=utf-8
+
+Content-Length: 335
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Error response</title>
+    </head>
+    <body>
+        <h1>Error response</h1>
+        <p>Error code: 404</p>
+        <p>Message: File not found.</p>
+        <p>Error code explanation: 404 - Nothing matches the given URI.</p>
+    </body>
+</html>
+
+$ cd ~/labs/11_network_services
+
+$ python3 scripts/check_http.py
+HTTP_CASES 6
+H01 GET / 200
+H02 HEAD / 200
+H03 GET /missing 404
+H04 GET /admin 403
+H05 POST / 405
+H06 GET /health 200
+ERROR_RESPONSES 3
+
+STDERR:
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    16  100    16    0     0    373      0 --:--:-- --:--:-- --:--:--   390
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0    16    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   335  100   335    0     0  29497      0 --:--:-- --:--:-- --:--:-- 30454

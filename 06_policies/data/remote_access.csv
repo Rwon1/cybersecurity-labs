@@ -1,0 +1,6 @@
+﻿User,MFA,ManagedDevice,VPN,Approval
+a.smirnova,Enabled,yes,yes,Approved
+p.petrov,Disabled,yes,yes,Approved
+lab.contractor,Disabled,no,yes,Expired
+admin1,Enabled,yes,yes,Approved
+former.vendor,Disabled,no,yes,Expired

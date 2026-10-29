@@ -1,0 +1,41 @@
+$ systemctl is-active ssh
+active
+
+$ sudo ss -lntp | grep ':22'
+LISTEN 0      4096         0.0.0.0:22        0.0.0.0:*    users:(("sshd",pid=599,fd=3),("systemd",pid=1,fd=93))
+LISTEN 0      4096            [::]:22           [::]:*    users:(("sshd",pid=599,fd=4),("systemd",pid=1,fd=94))
+
+$ ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+256 SHA256:yUFQJZxLd2gxCiA6ZIZC0o/z1Wp78XlyXhGR2/pztbQ root@sec-lab-ubuntu (ED25519)
+
+$ hostname
+sec-lab-ubuntu
+
+$ whoami
+student
+
+$ sudo journalctl -u ssh --since '15 minutes ago' --no-pager
+Oct 29 03:12:03 sec-lab-ubuntu systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Server listening on 0.0.0.0 port 22.
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Server listening on :: port 22.
+Oct 29 03:12:04 sec-lab-ubuntu systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 29 03:12:04 sec-lab-ubuntu sshd[924]: Received signal 15; terminating.
+Oct 29 03:12:04 sec-lab-ubuntu systemd[1]: Stopping ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:12:05 sec-lab-ubuntu systemd[1]: ssh.service: Deactivated successfully.
+Oct 29 03:12:05 sec-lab-ubuntu systemd[1]: Stopped ssh.service - OpenBSD Secure Shell server.
+-- Boot d9a6150cf642421eabdb2dc1936fb158 --
+Oct 29 03:19:36 sec-lab-ubuntu systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 29 03:19:38 sec-lab-ubuntu sshd[599]: Server listening on 0.0.0.0 port 22.
+Oct 29 03:19:38 sec-lab-ubuntu sshd[599]: Server listening on :: port 22.
+Oct 29 03:19:39 sec-lab-ubuntu systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: Accepted publickey for student from 192.168.56.1 port 6139 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:20:56 sec-lab-ubuntu sshd[823]: pam_unix(sshd:session): session closed for user student
+Oct 29 03:20:57 sec-lab-ubuntu sshd[851]: Accepted publickey for student from 192.168.56.1 port 6140 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:20:57 sec-lab-ubuntu sshd[851]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:17:50 sec-lab-ubuntu sshd[1088]: Connection reset by authenticating user student 192.168.56.1 port 26349 [preauth]
+Oct 29 03:18:18 sec-lab-ubuntu sshd[1098]: Accepted publickey for student from 192.168.56.1 port 26360 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:18:18 sec-lab-ubuntu sshd[1098]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)
+Oct 29 03:18:19 sec-lab-ubuntu sshd[1098]: pam_unix(sshd:session): session closed for user student
+Oct 29 03:18:37 sec-lab-ubuntu sshd[1601]: Accepted publickey for student from 192.168.56.1 port 37855 ssh2: ED25519 SHA256:ek8OuIKId56wt0Ho075UU6rpAYEicwmpKEaYLaXybBo
+Oct 29 03:18:37 sec-lab-ubuntu sshd[1601]: pam_unix(sshd:session): session opened for user student(uid=1000) by student(uid=0)

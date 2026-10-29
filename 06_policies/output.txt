@@ -1,0 +1,7 @@
+Дата проверки: 2026-10-13
+Staff без MFA: 2
+Пользователи без MFA: p.petrov, lab.contractor
+Строк доступа с отклонениями: 5
+Удалённый доступ: a.smirnova PASS, p.petrov FAIL, lab.contractor FAIL, admin1 PASS, former.vendor FAIL
+Просроченное обучение: p.petrov: 95 дн., lab.contractor: 42 дн.
+Создана копия и восстановлены файлы: 3; SHA-256 совпали.

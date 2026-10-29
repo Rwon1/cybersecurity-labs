@@ -1,0 +1,13 @@
+﻿Id,From,Subject,BodyExcerpt,DisplayedLink,Context
+M01,helpdesk@uni-security.example,Срочно подтвердите пароль LMS,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-0.example/login,urgent
+M02,office@university.example,Расписание семинара,Информационное уведомление без запроса пароля,https://portal.university.example/news,routine
+M03,helpdesk@uni-security.example,Вы выиграли грант,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-2.example/login,urgent
+M04,office@university.example,Отчет о библиотечных книгах,Информационное уведомление без запроса пароля,https://portal.university.example/news,routine
+M05,helpdesk@uni-security.example,Проверка учетной записи,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-4.example/login,urgent
+M06,office@university.example,Изменение аудитории,Информационное уведомление без запроса пароля,https://portal.university.example/news,routine
+M07,helpdesk@uni-security.example,Подтвердите платеж,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-6.example/login,urgent
+M08,office@university.example,Встреча кафедры,Информационное уведомление без запроса пароля,https://portal.university.example/news,routine
+M09,helpdesk@uni-security.example,MFA: немедленная проверка,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-8.example/login,urgent
+M10,helpdesk@uni-security.example,Уведомление о стипендии,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-9.example/login,urgent
+M11,office@university.example,Новый курс открыт,Информационное уведомление без запроса пароля,https://portal.university.example/news,routine
+M12,helpdesk@uni-security.example,Истек срок доступа,"Ваш доступ будет закрыт через 15 минут, введите пароль",https://verify-11.example/login,urgent

@@ -1,0 +1,6 @@
+﻿User,Group,Expires,Owner,Reason
+p.petrov,FinanceRead,2026-12-31,Finance,Staff без MFA
+lab.contractor,ResearchRead,2026-10-15,Research,Staff без MFA
+student.ivanov,LabAdmins,2026-12-31,IT,Нет в согласованном списке
+temp.vendor,Administrators,2026-09-01,IT,Нет в согласованном списке; Срок истёк
+former.vendor,VPNUsers,2026-09-15,IT,Нет в согласованном списке; Срок истёк; У отключённой учётной записи осталось право

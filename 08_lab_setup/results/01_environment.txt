@@ -1,0 +1,53 @@
+$ whoami
+student
+
+$ hostnamectl
+ Static hostname: sec-lab-ubuntu
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: d3fa2dfa9c7f4f5faf0a957e8c9b4f84
+         Boot ID: d9a6150cf642421eabdb2dc1936fb158
+  Virtualization: oracle
+Operating System: Ubuntu 24.04.5 LTS
+          Kernel: Linux 6.8.0-147-generic
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox
+Firmware Version: VirtualBox
+   Firmware Date: Fri 2006-12-01
+    Firmware Age: 19y 10month 3w 6d
+
+$ uname -r
+6.8.0-147-generic
+
+$ lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda       8:0    0   20G  0 disk
+├─sda1    8:1    0   19G  0 part /
+├─sda14   8:14   0    4M  0 part
+├─sda15   8:15   0  106M  0 part /boot/efi
+└─sda16 259:0    0  913M  0 part /boot
+sr0      11:0    1   68K  1 rom
+
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       291Mi       1.3Gi       748Ki       530Mi       1.6Gi
+Swap:             0B          0B          0B
+
+$ cat /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+$ python3 --version
+Python 3.12.3

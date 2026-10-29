@@ -1,0 +1,21 @@
+$ cd ~/labs/12_cryptography
+
+$ openssl genpkey -algorithm Ed25519 -out private.pem
+
+$ chmod 600 private.pem
+
+$ openssl pkey -in private.pem -pubout -out public.pem
+
+$ openssl pkeyutl -sign -inkey private.pem -rawin -in data/document.txt -out signature.bin
+
+$ openssl pkeyutl -verify -pubin -inkey public.pem -rawin -in data/document.txt -sigfile signature.bin
+Signature Verified Successfully
+
+$ cp data/document.txt changed.txt; printf 'modified\n' >> changed.txt
+
+$ openssl pkeyutl -verify -pubin -inkey public.pem -rawin -in changed.txt -sigfile signature.bin; echo "changed verify exit=$?"
+Signature Verification Failure
+changed verify exit=1
+
+$ stat -c '%a %U:%G %n' private.pem
+600 student:student private.pem
